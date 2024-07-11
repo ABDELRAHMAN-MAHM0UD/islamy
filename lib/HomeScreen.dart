@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Homescreen extends StatelessWidget {
-  const Homescreen({super.key});
+class Homescreen extends StatefulWidget {
+
+  @override
+  State<Homescreen> createState() => _HomescreenState();
+}
+
+class _HomescreenState extends State<Homescreen> {
+  int SelectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +21,14 @@ class Homescreen extends StatelessWidget {
           bottomNavigationBar: Theme(
             data: Theme.of(context).copyWith(canvasColor: Color(0xffB7935F
             )),
-            child: BottomNavigationBar(items: [
+            child: BottomNavigationBar(
+                currentIndex: SelectedIndex,
+                onTap: (index){
+                  setState(() {
+                    SelectedIndex = index;
+                  });
+                  },
+                items: [
               BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/radio.png")),
                 label: "tab_1"
               ),
