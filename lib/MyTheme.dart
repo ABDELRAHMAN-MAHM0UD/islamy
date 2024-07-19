@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:islamy/AppColors.dart';
 
 class Mytheme{
@@ -8,16 +7,18 @@ class Mytheme{
 
     primaryColor: appColors.primaryLightColor,
     scaffoldBackgroundColor: Colors.transparent,
-    appBarTheme:AppBarTheme( backgroundColor:  Colors.transparent,
+    appBarTheme:const AppBarTheme( backgroundColor:  Colors.transparent,
         centerTitle: true,
         elevation: 0
     ),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
+      titleLarge: TextStyle(fontSize: 27),
+        headlineSmall: TextStyle(fontSize: 27,fontWeight: FontWeight.w600),
         bodyLarge:TextStyle(
           color: Color(0xff242424),
-          fontSize: 30,fontWeight: FontWeight.bold,
+          fontSize: 32,fontWeight: FontWeight.bold,
         ) ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       selectedItemColor: Colors.black
     )
   ) ;
