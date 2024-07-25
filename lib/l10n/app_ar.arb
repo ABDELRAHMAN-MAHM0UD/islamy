@@ -1,0 +1,17 @@
+{
+"app_Title":"إسلامي",
+"sura_Name":"اسم السورة",
+"quran":"القرآن",
+"hadieth":"الحديث",
+"hadieth_name":"اسم الحديث",
+"sebha":"السبحة",
+"sebhaCounter":"عدد التسبيحات",
+"radio":"المذياع",
+"settings":"الإعدادات",
+"select_lan": "اختر اللغة",
+"lan_En": "الإنجليزية",
+"lan_ar":"العربية",
+"theme_light":"الوضع النهاري",
+"theme_dark":"الوضع الليلي",
+"mode":"الوضع"
+}
