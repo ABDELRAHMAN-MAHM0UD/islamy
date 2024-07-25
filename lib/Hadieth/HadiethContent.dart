@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islamy/AppColors.dart';
+import 'package:islamy/Providers/AppConfigLanguage.dart';
 import 'package:islamy/Quran/SuraAya.dart';
+import 'package:provider/provider.dart';
 
 class Hadiethcontent extends StatelessWidget {
+
   static const String routeName = "Hadeith Content";
 
   const Hadiethcontent({super.key});
@@ -10,6 +14,8 @@ class Hadiethcontent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Appconfiglanguage>(context);
+
     var args = ModalRoute
         .of(context)!
         .settings
@@ -17,19 +23,20 @@ class Hadiethcontent extends StatelessWidget {
 
     return Stack(
         children: [
-          Image.asset("assets/images/default_bg.png"),
-          Scaffold(
+          provider.isDark()?
+          Image.asset("assets/images/dark_bg.png"):
+          Image.asset("assets/images/default_bg.png"),          Scaffold(
               appBar: AppBar(
-                  title: Text(args.Hadeith_title, style: Theme
-                      .of(context)
-                      .textTheme
-                      .bodyLarge
-                  )
+                  title: Text(args.Hadeith_title, style:  provider.isDark()?
+                  Theme.of(context).textTheme.bodyLarge?.copyWith(color: appColors.GoldenDarkColor):
+                  Theme.of(context).textTheme.bodyLarge,)
               ),
               body: Container(
                 child: Text(
-                    args.Hadeith_content,style: Theme.of(context).textTheme.titleLarge ,
-                ),
+                    args.Hadeith_content,style:
+                provider.isDark()?
+                Theme.of(context).textTheme.bodyLarge?.copyWith(color: appColors.GoldenDarkColor):
+                Theme.of(context).textTheme.bodyLarge,                ),
               )
           )
         ]

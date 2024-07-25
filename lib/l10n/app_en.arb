@@ -5,9 +5,13 @@
 "hadieth":"Hadieth",
 "hadieth_name":"Hadieth Name",
 "sebha":"Sebha",
+"sebhaCounter":"num of tasbeh",
 "radio":"Radio",
 "settings":"Settings",
 "select_lan": "Select Language",
 "lan_En": "English",
-"lan_ar":"Arabic"
+"lan_ar":"Arabic",
+"theme_light":"Light mode",
+"theme_dark":"Dark mode",
+"mode":"Mode"
 }

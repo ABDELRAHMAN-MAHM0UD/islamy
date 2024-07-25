@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/AppColors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islamy/Providers/AppConfigLanguage.dart';
+import 'package:provider/provider.dart';
+
 
 class Sebhatap extends StatefulWidget {
   const Sebhatap({super.key});
@@ -14,6 +18,8 @@ class _SebhatapState extends State<Sebhatap> {
   String text = "سبحان الله";
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Appconfiglanguage>(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -46,11 +52,14 @@ class _SebhatapState extends State<Sebhatap> {
             Image.asset("assets/images/theSebha.png")))),
         SizedBox(height: 10,),
 
-        const Text("عدد التسبيحات",style: TextStyle(fontSize: 32),),
+         Text(AppLocalizations.of(context)!.sebhaCounter,
+        style: Theme.of(context).textTheme.titleLarge,),
+
         Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
-          color: appColors.primaryLightColor,),
+               color: provider.isDark() ? appColors.GoldenDarkColor:
+    appColors.primaryLightColor),
           margin: const EdgeInsets.only(top:35,bottom: 20),
           width: MediaQuery.of(context).size.width*.15,
           height: MediaQuery.of(context).size.width*.15,
@@ -60,8 +69,9 @@ class _SebhatapState extends State<Sebhatap> {
         Container(
         width: MediaQuery.of(context).size.width*.32,
         decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        color: appColors.primaryLightColor
+        borderRadius: BorderRadius.circular(30)
+            ,color: provider.isDark() ? appColors.GoldenDarkColor:
+        appColors.primaryLightColor
         ),
           child:
            Center(child: Text(text,style: TextStyle(fontSize: 30),))

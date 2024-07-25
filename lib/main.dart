@@ -6,8 +6,9 @@ import 'package:islamy/MyTheme.dart';
 import 'package:islamy/Providers/AppConfigLanguage.dart';
 import 'package:islamy/Quran/Sura.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islamy/Settings.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -29,6 +30,10 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      supportedLocales: [
+        Locale("en"), // English
+        Locale("ar"), // Arabic
+      ],
 
       locale: Locale(provider.AppLanguage),
       routes: {
@@ -38,6 +43,8 @@ class MyApp extends StatelessWidget {
       },
       initialRoute: Homescreen.routeName,
       theme: Mytheme.lightMode,
+      darkTheme: Mytheme.darkMode,
+      themeMode: provider.AppTheme,
       debugShowCheckedModeBanner: false,
 
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamy/AppColors.dart';
+import 'package:islamy/Providers/AppConfigLanguage.dart';
 import 'package:islamy/Quran/SuraAya.dart';
+import 'package:provider/provider.dart';
 
 class Sura extends StatefulWidget {
   static const String routeName ="Sura";
@@ -17,16 +19,22 @@ class _SuraState extends State<Sura> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Appconfiglanguage>(context);
     var args = ModalRoute.of(context)?.settings.arguments as SuraArgs;
     if (SuraList.isEmpty) {
       getFile(args.index);
     }
     return Stack(
         children: [
-        Image.asset("assets/images/default_bg.png"),
-    Scaffold(
+          provider.isDark()?
+          Image.asset("assets/images/dark_bg.png"):
+          Image.asset("assets/images/default_bg.png"),
+          Scaffold(
     appBar: AppBar(
-    title: Text(args.name,style: Theme.of(context).textTheme.bodyLarge
+    title: Text(args.name,style:
+    provider.isDark()?
+    Theme.of(context).textTheme.bodyLarge?.copyWith(color: appColors.GoldenDarkColor):
+    Theme.of(context).textTheme.bodyLarge,
     )
     ),
       body:

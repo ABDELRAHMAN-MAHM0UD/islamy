@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/AppColors.dart';
 import 'package:islamy/Hadieth/HadiethTap.dart';
+import 'package:islamy/Providers/AppConfigLanguage.dart';
 import 'package:islamy/Quran/QuranTap.dart';
 import 'package:islamy/Radio/RadioTap.dart';
 import 'package:islamy/Sebha/SebhaTap.dart';
 import 'package:islamy/Settings.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 
 class Homescreen extends StatefulWidget {
@@ -21,8 +24,11 @@ class _HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Appconfiglanguage>(context);
     return Stack(
       children: [
+        provider.isDark()?
+        Image.asset("assets/images/dark_bg.png"):
         Image.asset("assets/images/default_bg.png"),
         Scaffold(
           appBar: AppBar(
@@ -30,8 +36,10 @@ class _HomescreenState extends State<Homescreen> {
                 style: Theme.of(context).textTheme.bodyLarge
             ),),
           bottomNavigationBar: Theme(
-            data: Theme.of(context).copyWith(canvasColor: const Color(0xffB7935F
-            )),
+            data:
+            provider.isDark()?
+            Theme.of(context).copyWith(canvasColor: Color(0xff141A2E)):
+            Theme.of(context).copyWith(canvasColor: Color(0xffB7935F)),
             child: BottomNavigationBar(
                 currentIndex: SelectedIndex,
                 onTap: (index){
